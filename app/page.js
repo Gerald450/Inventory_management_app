@@ -5,7 +5,8 @@ import { firestore } from '@/firebase';
 import { collection, deleteDoc, getDoc, getDocs, query, setDoc, doc } from 'firebase/firestore';
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete'; 
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import AddIcon from '@mui/icons-material/Add'
+import MinimizeIcon from '@mui/icons-material/Minimize';
 
 export default function Home() {
   const [pantry, setInventory] = useState([]);
@@ -87,12 +88,7 @@ export default function Home() {
       alignItems="center"
       border= 'ActiveBorder'
       p={3}
-      bgcolor="#f5f5f5"
-      sx={{
-        backgroundImage: 'url(https://t3.ftcdn.net/jpg/04/59/15/58/360_F_459155812_i8zcXL46AxG1VKNQ5KaxSb6gGpapLuO0.jpg)', 
-        backgroundSize: 'cover',
-        backgroundAttachment: 'fixed',
-      }}
+      bgcolor="#DEF5FF"
     >
       <Modal open={open} onClose={handleClose}>
         <Box
@@ -166,18 +162,18 @@ export default function Home() {
 
       <Box width="100%" maxWidth={800} height = '600px' overflow = 'auto'  border="2px solid #ddd" 
         borderRadius={2} 
-        bgcolor="#333">
+        bgcolor="#FFE1CA">
 
 
       <Stack spacing={2}>
         {filteredPantry.map(({ name, quantity }) => (
 
 
-          <Card key={name} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Card key={name} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', overflow: 'scroll'}}>
 
-            <CardContent>
+            <CardContent variant = 'contained'>
 
-              <Typography variant="h6">
+              <Typography variant="contained">
                 {name.charAt(0).toUpperCase() + name.slice(1)}
                 </Typography>
 
@@ -186,8 +182,8 @@ export default function Home() {
             </CardContent>
 
             <CardActions>
-              <Button size="small" variant="contained" color="success" onClick={() => addItem({ name, quantity: 1 })}>Add</Button>
-              <Button size="small" variant="contained" color="error" onClick={() => removeItem(name)}>Remove 1</Button>
+              <IconButton size="small" variant="contained" color="success" onClick={() => addItem({ name, quantity: 1 })}><AddIcon/> </IconButton>
+              <IconButton  size="small" variant="contained" color="error" onClick={() => removeItem(name)}><MinimizeIcon/></IconButton>
               <IconButton color="error" onClick={() => deleteItem(name)}>
                 <DeleteIcon />
               </IconButton>
