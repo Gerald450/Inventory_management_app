@@ -137,7 +137,7 @@ export default function Home() {
         </Box>
       </Modal>
 
-      <Typography variant="h3" gutterBottom>
+      <Typography variant="h3" gutterBottom color="black">
         Pantry Inventory
       </Typography>
 
