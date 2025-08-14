@@ -165,11 +165,11 @@ export default function Home() {
         bgcolor="#FFE1CA">
 
 
-      <Stack spacing={2}>
+      <Stack spacing={2} bgcolor="#FFE1CA">
         {filteredPantry.map(({ name, quantity }) => (
 
 
-          <Card key={name} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', overflow: 'scroll'}}>
+          <Card key={name} bgcolor="#FFE1CA" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', overflow: 'scroll'}}>
 
             <CardContent variant = 'contained'>
 
